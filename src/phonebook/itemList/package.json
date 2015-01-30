@@ -1,4 +1,4 @@
 {
-	"name": "phonebook.itemList",
-	"main": "itemList.js"
+    "name": "phonebook.itemList",
+    "main": "itemList.js"
 }

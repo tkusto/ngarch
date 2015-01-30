@@ -1,4 +1,4 @@
 {
-	"name": "phonebook.storage",
-	"main": "storage.js"
+    "name": "phonebook.storage",
+    "main": "storage.js"
 }
