@@ -1,11 +1,23 @@
 module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-browserify');
 	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.initConfig({
+
+		clean: {
+			js: ['app/js/phonebook.min.js'],
+			css: ['app/css/phonebook.css'],
+			libs: [
+				'app/js/angular.min.js',
+				'app/js/angular-route.min.js'
+			],
+			html: ['app/index.html'],
+			glyphicons: ['app/assets/glyphicons-*']
+		},
 
 		copy: {
 			html: {
@@ -30,10 +42,12 @@ module.exports = function (grunt) {
 
 		less: {
 			dev: {
-				files: { 'app/css/phonebook.css': ['src/main.less'] }
+				files: { 'app/css/phonebook.css': ['src/main.less'] },
+				options: { compress: false }
 			},
 			prod: {
-				options: { compress: true }
+				options: { compress: true },
+				files: { 'app/css/phonebook.css': ['src/main.less'] }
 			}
 		},
 
@@ -53,7 +67,7 @@ module.exports = function (grunt) {
 		},
 
 		connect: {
-			server: {
+			dev: {
 				options: {
 					base: 'app',
 					hostname: 'localhost',
@@ -71,15 +85,16 @@ module.exports = function (grunt) {
 			},
 			js: {
 				files: ['src/**/*.js', 'src/**/*.html', '!src/index.html'],
-				tasks: ['browserify:dev']
+				tasks: ['clean:js', 'browserify:dev']
 			},
 			less: {
 				files: ['src/**/*.less'],
-				tasks: ['less:dev']
+				tasks: ['clean:css', 'less:dev']
 			}
 		}
 
 	});
 
-	grunt.registerTask('dev', ['copy', 'browserify:dev', 'less:dev', 'connect', 'watch']);
+	grunt.registerTask('dev', ['clean', 'copy', 'browserify:dev', 'less:dev', 'connect', 'watch']);
+	grunt.registerTask('default', ['clean', 'copy', 'browserify:prod', 'less:prod']);
 };
