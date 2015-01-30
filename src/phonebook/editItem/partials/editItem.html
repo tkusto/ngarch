@@ -6,7 +6,7 @@
 				ng-show="editItemForm.$submitted"></span>
 		</h4>
 		<div class="form-group">
-			<ul ng-show="phones.length > 0">
+			<ul ng-show="phones.length > 0" class="list-unstyled phone-list">
 				<li ng-repeat="phone in phones">
 					<span ng-bind="phone"></span>
 					<button class="btn btn-link" ng-click="editItem.delPhone(phone)">

@@ -15,7 +15,7 @@
 				ng-model="itemName"/>
 		</div>
 		<div class="form-group">
-			<ul ng-show="phones.length > 0">
+			<ul ng-show="phones.length > 0" class="list-unstyled phone-list">
 				<li ng-repeat="phone in phones">
 					<span ng-bind="phone"></span>
 					<button class="btn btn-link" ng-click="editItem.delPhone(phone)">
@@ -25,7 +25,7 @@
 			</ul>
 			<p class="help-block" ng-hide="phones.length > 0">Item have no phones...</p>
 		</div>
-		<div class="form-group" ng-class="{ 'has-error': addItemForm.itemPhone.$invalid }" phone-link="phones">
+		<div class="form-group" ng-class="{ 'has-error': addItemForm.itemPhone.$invalid }">
 			<label for="itemPhone">Phone</label>
 			<div class="input-group">
 				<input type="text"
