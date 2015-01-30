@@ -1,0 +1,19 @@
+<form class="module-itemList" name="itemListForm">
+	<div class="form-group">
+		<div class="btn-group">
+			<a ng-href="#/AddItem" class="btn btn-primary">Add Item</a>
+			<button class="btn btn-default" ng-click="itemList.delSelectedItems()">
+				<span class="glyphicon glyphicon-trash"></span>
+			</button>
+		</div>
+	</div>
+	<ul class="list-group">
+		<li ng-repeat="(name, phones) in phonebook track by name"
+			class="list-group-item"
+			ng-class="{ 'active': selectedItems[name] }">
+			<span class="badge" ng-bind="phones.length"></span>
+			<input type="checkbox" ng-model="selectedItems[name]"/>
+			<a ng-href="#/EditItem/{{name}}" ng-bind="name"></a>
+		</li>
+	</ul>
+</form>
