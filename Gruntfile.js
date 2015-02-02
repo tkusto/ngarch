@@ -51,30 +51,27 @@ module.exports = function (grunt) {
         less: {
             dev: {
                 options: { compress: false },
-                files: { 'app/css/phonebook.css': ['src/main.less'] }
+                files: { 'app/css/phonebook.css': ['src/index.less'] }
             },
             prod: {
                 options: { compress: true },
-                files: { 'app/css/phonebook.css': ['src/main.less'] }
+                files: { 'app/css/phonebook.css': ['src/index.less'] }
             }
         },
 
         browserify: {
-            options: {
-                transform: [
-                    'browserify-shim',
-                    'brfs',
-                    ['uglifyify', { global: true }]
-                ]
-            },
             dev: {
                 options: {
+                    transform: ['browserify-shim', 'brfs'],
                     browserifyOptions: { debug: true },
                 },
-                files: { 'app/js/phonebook.min.js': 'src/main.js' }
+                files: { 'app/js/phonebook.min.js': 'src/index.js' }
             },
             prod: {
-                files: { 'app/js/phonebook.min.js': 'src/main.js' }
+                options: {
+                    transform: ['browserify-shim', 'brfs', 'uglifyify']
+                },
+                files: { 'app/js/phonebook.min.js': 'src/index.js' }
             }
         },
 
@@ -102,6 +99,10 @@ module.exports = function (grunt) {
             less: {
                 files: ['src/**/*.less'],
                 tasks: ['clean:css', 'less:dev']
+            },
+            gruntfile: {
+                files: ['Gruntfile.js'],
+                tasks: ['clean', 'build:dev']
             }
         }
 
@@ -109,6 +110,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build:dev', ['clean', 'copy', 'browserify:dev', 'less:dev']);
     grunt.registerTask('build:prod', ['clean', 'copy', 'browserify:prod', 'less:prod']);
-    grunt.registerTask('dev', ['build:dev', 'connect', 'watch']);
+    grunt.registerTask('dev', ['build:dev', 'connect:dev', 'watch']);
     grunt.registerTask('default', ['build:prod']);
 };
