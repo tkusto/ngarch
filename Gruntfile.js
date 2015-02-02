@@ -26,7 +26,7 @@ module.exports = function (grunt) {
             },
             libs: {
                 files: [{
-                    cwd: './node_modules',
+                    cwd: './node_modules/',
                     src: [
                         'angular/angular.min.js',
                         'angular-route/angular-route.min.js',
@@ -51,11 +51,11 @@ module.exports = function (grunt) {
         less: {
             dev: {
                 options: { compress: false },
-                files: { 'app/css/phonebook.css': ['src/index.less'] }
+                files: { 'app/css/phonebook.css': 'src/index.less' }
             },
             prod: {
                 options: { compress: true },
-                files: { 'app/css/phonebook.css': ['src/index.less'] }
+                files: { 'app/css/phonebook.css': 'src/index.less' }
             }
         },
 
