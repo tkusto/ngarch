@@ -13,7 +13,8 @@ module.exports = function (grunt) {
             css: ['app/css/phonebook.css'],
             libs: [
                 'app/js/angular.min.js',
-                'app/js/angular-route.min.js'
+                'app/js/angular-route.min.js',
+                'app/js/angular-ui-router.min.js'
             ],
             html: ['app/index.html'],
             glyphicons: ['app/assets/glyphicons-*']
@@ -24,10 +25,17 @@ module.exports = function (grunt) {
                 files: { 'app/index.html': 'src/index.html' }
             },
             libs: {
-                files: {
-                    'app/js/angular.min.js': './node_modules/angular/angular.min.js',
-                    'app/js/angular-route.min.js': './node_modules/angular-route/angular-route.min.js'
-                }
+                files: [{
+                    cwd: './node_modules',
+                    src: [
+                        'angular/angular.min.js',
+                        'angular-route/angular-route.min.js',
+                        'angular-ui-router/release/angular-ui-router.min.js'
+                    ],
+                    dest: 'app/js/',
+                    flatten: true,
+                    expand: true
+                }]
             },
             glyphicons: {
                 files: [{
@@ -42,8 +50,8 @@ module.exports = function (grunt) {
 
         less: {
             dev: {
-                files: { 'app/css/phonebook.css': ['src/main.less'] },
-                options: { compress: false }
+                options: { compress: false },
+                files: { 'app/css/phonebook.css': ['src/main.less'] }
             },
             prod: {
                 options: { compress: true },
@@ -99,6 +107,8 @@ module.exports = function (grunt) {
 
     });
 
-    grunt.registerTask('dev', ['clean', 'copy', 'browserify:dev', 'less:dev', 'connect', 'watch']);
-    grunt.registerTask('default', ['clean', 'copy', 'browserify:prod', 'less:prod']);
+    grunt.registerTask('build:dev', ['clean', 'copy', 'browserify:dev', 'less:dev']);
+    grunt.registerTask('build:prod', ['clean', 'copy', 'browserify:prod', 'less:prod']);
+    grunt.registerTask('dev', ['build:dev', 'connect', 'watch']);
+    grunt.registerTask('default', ['build:prod']);
 };
