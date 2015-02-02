@@ -1,15 +1,8 @@
 var angular = require('angular');
-var routes = require('./routes');
-var storage = require('./storage');
-var itemList = require('./itemList');
-var editItem = require('./editItem');
+var dependencies = require('./dependencies');
+var ngDepNames = dependencies.map(function getDepName(dep) { return dep.name; });
 
-module.exports = angular.module('phonebook', [
-    routes.name,
-    storage.name,
-    itemList.name,
-    editItem.name
-]).
+module.exports = angular.module('phonebook', ngDepNames).
 config(['StorageProvider', function (StorageProvider) {
     StorageProvider.setKeyName('phonebook');
 }]);
