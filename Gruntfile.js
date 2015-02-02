@@ -53,7 +53,11 @@ module.exports = function (grunt) {
 
         browserify: {
             options: {
-                transform: ['browserify-shim', 'brfs', 'uglifyify']
+                transform: [
+                    'browserify-shim',
+                    'brfs',
+                    ['uglifyify', { global: true }]
+                ]
             },
             dev: {
                 options: {

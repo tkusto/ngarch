@@ -2,6 +2,10 @@
   "name": "phonebook-app",
   "version": "1.0.0",
   "devDependencies": {
+    "angular": "^1.3.10",
+    "angular-route": "^1.3.10",
+    "angular-ui-router": "^0.2.13",
+    "bootstrap": "^3.3.2",
     "brfs": "^1.2.0",
     "browserify": "^8.1.1",
     "browserify-shim": "^3.8.2",
@@ -15,11 +19,9 @@
     "less": "^2.2.0",
     "uglifyify": "^3.0.1"
   },
-  "dependencies": {
-    "angular": "^1.3.10",
-    "angular-route": "^1.3.10"
-  },
   "browserify-shim": {
-    "angular": "global:angular"
+    "angular": "global:angular",
+    "angular-route": "global:angular.module('ngRoute')",
+    "angular-ui-router": "global:angular.module('ui.router')"
   }
 }
