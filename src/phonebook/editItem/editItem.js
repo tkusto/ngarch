@@ -1,10 +1,11 @@
 var angular = require('angular');
+var ngRoute = require('angular-route');
 var fs = require('fs');
 var storage = require('../storage');
 var controllers = require('./controllers');
 
 module.exports = angular.module('phonebook.editItem', [
-    'ngRoute',
+    ngRoute.name,
     storage.name,
     controllers.name
 ]).
