@@ -1,20 +1,20 @@
 var angular = require('angular');
-var ngRoute = require('angular-route');
+var uiRouter = require('angular-ui-router');
 var storage = require('../../storage');
 module.exports = angular.module('phonebook.editItem.EditItemCtrl', [
-    ngRoute.name,
+    uiRouter.name,
     storage.name
 ]).
 controller('EditItemCtrl', EditItemCtrl);
 
-EditItemCtrl.$inject = ['$scope', '$routeParams', 'Storage'];
-function EditItemCtrl($scope, $routeParams, Storage) {
+EditItemCtrl.$inject = ['$scope', '$stateParams', 'Storage'];
+function EditItemCtrl($scope, $stateParams, Storage) {
 
-    $scope.itemName = $routeParams.itemName || '';
+    $scope.itemName = $stateParams.itemName || '';
     $scope.itemPhone = '';
     $scope.phones = [];
 
-    Storage.getItem($routeParams.itemName).
+    Storage.getItem($stateParams.itemName).
         then(function updatePhones(phones) {
             $scope.phones = phones;
         });

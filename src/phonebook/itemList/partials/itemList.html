@@ -1,7 +1,7 @@
 <form class="module-itemList" name="itemListForm">
     <div class="form-group">
         <div class="btn-group">
-            <a ng-href="#/AddItem" class="btn btn-primary">Add Item</a>
+            <a ui-sref="main.addItem" class="btn btn-primary">Add Item</a>
             <button class="btn btn-default" ng-click="itemList.delSelectedItems()">
                 <span class="glyphicon glyphicon-trash"></span>
             </button>
@@ -13,7 +13,7 @@
             ng-class="{ 'active': selectedItems[name] }">
             <span class="badge" ng-bind="phones.length"></span>
             <input type="checkbox" ng-model="selectedItems[name]"/>
-            <a ng-href="#/EditItem/{{name}}" ng-bind="name"></a>
+            <a ui-sref="main.editItem({ itemName: name })" ng-bind="name"></a>
         </li>
     </ul>
 </form>

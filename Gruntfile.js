@@ -13,7 +13,6 @@ module.exports = function (grunt) {
             css: ['app/css/phonebook.css'],
             libs: [
                 'app/js/angular.min.js',
-                'app/js/angular-route.min.js',
                 'app/js/angular-ui-router.min.js'
             ],
             html: ['app/index.html'],
@@ -29,7 +28,6 @@ module.exports = function (grunt) {
                     cwd: './node_modules/',
                     src: [
                         'angular/angular.min.js',
-                        'angular-route/angular-route.min.js',
                         'angular-ui-router/release/angular-ui-router.min.js'
                     ],
                     dest: 'app/js/',
@@ -80,7 +78,7 @@ module.exports = function (grunt) {
                 options: {
                     base: 'app',
                     hostname: 'localhost',
-                    port: 8082,
+                    port: '?',
                     livereload: true
                 }
             }
@@ -90,7 +88,7 @@ module.exports = function (grunt) {
             options: { spawn: true },
             html: {
                 files: ['src/index.html'],
-                tasks: ['copy:html']
+                tasks: ['clean', 'build:dev']
             },
             js: {
                 files: ['src/**/*.js', 'src/**/*.html', '!src/index.html'],

@@ -1,8 +1,6 @@
 var angular = require('angular');
-var ngRoute = require('angular-route');
 var storage = require('../../storage');
 module.exports = angular.module('phonebook.itemList.ItemListCtrl', [
-    ngRoute.name,
     storage.name
 ]).
 controller('ItemListCtrl', ItemListCtrl);

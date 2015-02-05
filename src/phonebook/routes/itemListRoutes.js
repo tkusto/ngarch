@@ -1,18 +1,23 @@
 var angular = require('angular');
-var ngRoute = require('angular-route');
+var uiRouter = require('angular-ui-router');
 var itemList = require('../itemList');
 
 module.exports = angular.module('phonebook.routes.itemListRoutes', [
-    ngRoute.name,
+    uiRouter.name,
     itemList.name
 ]).
 config(Routes);
 
-Routes.$inject = ['$routeProvider'];
-function Routes($routeProvider) {
-    $routeProvider.when('/ItemList', {
-        controller: 'ItemListCtrl',
-        controllerAs: 'itemList',
-        templateUrl: 'itemList/partials/itemList.html'
+Routes.$inject = ['$stateProvider'];
+function Routes($stateProvider) {
+    $stateProvider.state('main.itemList', {
+        url: '/ItemList',
+        views: {
+            'main@': {
+                controller: 'ItemListCtrl',
+                controllerAs: 'itemList',
+                templateUrl: 'itemList/partials/itemList.html'
+            }
+        }
     });
 }

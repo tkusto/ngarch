@@ -1,16 +1,19 @@
 var angular = require('angular');
-var ngRoute = require('angular-route');
+var uiRouter = require('angular-ui-router');
 var itemListRoutes = require('./itemListRoutes');
 var editItemRoutes = require('./editItemRoutes');
 
 module.exports = angular.module('phonebook.routes', [
-    ngRoute.name,
+    uiRouter.name,
     itemListRoutes.name,
     editItemRoutes.name
 ]).
 config(Routes);
 
-Routes.$inject = ['$routeProvider'];
-function Routes($routeProvider) {
-    $routeProvider.when('/', { redirectTo: '/ItemList' }).otherwise({ redirectTo: '/' });
+Routes.$inject = ['$stateProvider', '$urlRouterProvider'];
+function Routes($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/ItemList');
+    $stateProvider.state('main', {
+        abstract: true
+    });
 }
