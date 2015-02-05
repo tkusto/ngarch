@@ -2,10 +2,12 @@ var angular = require('angular');
 var fs = require('fs');
 var storage = require('../storage');
 var controllers = require('./controllers');
+var directives = require('./directives');
 
 module.exports = angular.module('phonebook.editItem', [
     storage.name,
-    controllers.name
+    controllers.name,
+    directives.name
 ]).
 run(Templates);
 

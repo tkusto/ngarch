@@ -8,7 +8,7 @@
         <div class="form-group">
             <ul ng-show="phones.length > 0" class="list-unstyled phone-list">
                 <li ng-repeat="phone in phones">
-                    <span ng-bind="phone"></span>
+                    <a phone-link="{{phone}}"></a>
                     <button class="btn btn-link" ng-click="editItem.delPhone(phone)">
                         <span class="glyphicon glyphicon-minus-sign text-danger"></span>
                     </button>
