@@ -16,7 +16,7 @@ function Routes($stateProvider) {
             'main@': {
                 controller: 'ItemListCtrl',
                 controllerAs: 'itemList',
-                templateUrl: 'itemList/partials/itemList.html'
+                templateUrl: itemList.tmpls.itemList
             }
         }
     });

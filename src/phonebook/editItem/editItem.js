@@ -11,14 +11,19 @@ module.exports = angular.module('phonebook.editItem', [
 ]).
 run(Templates);
 
+var tmpls = module.exports.tmpls = {
+    editItem: 'editItem' + Date.now().toString(36),
+    addItem: 'addItem' + Date.now().toString(36)
+};
+
 Templates.$inject = ['$templateCache'];
 function Templates($templateCache) {
     $templateCache.put(
-        'editItem/partials/editItem.html',
+        tmpls.editItem,
         fs.readFileSync(__dirname + '/partials/editItem.html', 'utf-8')
     );
     $templateCache.put(
-        'editItem/partials/addItem.html',
+        tmpls.addItem,
         fs.readFileSync(__dirname + '/partials/addItem.html', 'utf-8')
     );
 }

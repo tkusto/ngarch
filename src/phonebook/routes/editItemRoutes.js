@@ -16,7 +16,7 @@ function Routes($stateProvider) {
             'main@': {
                 controller: 'EditItemCtrl',
                 controllerAs: 'editItem',
-                templateUrl: 'editItem/partials/addItem.html'
+                templateUrl: editItem.tmpls.addItem
             }
         }
     });
@@ -26,7 +26,7 @@ function Routes($stateProvider) {
             'main@': {
                 controller: 'EditItemCtrl',
                 controllerAs: 'editItem',
-                templateUrl: 'editItem/partials/editItem.html'
+                templateUrl: editItem.tmpls.editItem
             }
         }
     });

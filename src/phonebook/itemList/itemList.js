@@ -9,10 +9,14 @@ module.exports = angular.module('phonebook.itemList', [
 ]).
 run(Templates);
 
+var tmpls = module.exports.tmpls = {
+    itemList: 'itemList' + Date.now().toString(36)
+};
+
 Templates.$inject = ['$templateCache'];
 function Templates($templateCache) {
     $templateCache.put(
-        'itemList/partials/itemList.html',
+        tmpls.itemList,
         fs.readFileSync(__dirname + '/partials/itemList.html', 'utf-8')
     );
 }
