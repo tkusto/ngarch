@@ -16,11 +16,12 @@
     "grunt-contrib-less": "^1.0.0",
     "grunt-contrib-watch": "^0.6.1",
     "less": "^2.2.0",
+    "ramda": "^0.10.0",
     "uglifyify": "^3.0.1"
   },
   "browserify-shim": {
     "angular": "global:angular",
-    "angular-route": "global:angular.module('ngRoute')",
-    "angular-ui-router": "global:angular.module('ui.router')"
+    "angular-ui-router": "global:angular.module('ui.router')",
+    "ramda": "global:R"
   }
 }

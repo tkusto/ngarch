@@ -13,7 +13,8 @@ module.exports = function (grunt) {
             css: ['app/css/phonebook.css'],
             libs: [
                 'app/js/angular.min.js',
-                'app/js/angular-ui-router.min.js'
+                'app/js/angular-ui-router.min.js',
+                'app/js/ramda.min.js'
             ],
             html: ['app/index.html'],
             glyphicons: ['app/assets/glyphicons-*']
@@ -28,7 +29,8 @@ module.exports = function (grunt) {
                     cwd: './node_modules/',
                     src: [
                         'angular/angular.min.js',
-                        'angular-ui-router/release/angular-ui-router.min.js'
+                        'angular-ui-router/release/angular-ui-router.min.js',
+                        'ramda/dist/ramda.min.js'
                     ],
                     dest: 'app/js/',
                     flatten: true,

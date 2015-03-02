@@ -1,5 +1,5 @@
 var angular = require('angular');
-var uiRouter = requrie('angular-ui-router');
+var uiRouter = require('angular-ui-router');
 var fs = require('fs');
 var storage = require('../storage');
 
