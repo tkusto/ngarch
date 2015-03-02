@@ -1,5 +1,4 @@
-module.exports = angular.module('phonebook.storage.StorageProvider', []).
-provider('Storage', StorageProvider);
+module.exports = StorageProvider;
 
 var lsItemName = null;
 

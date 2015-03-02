@@ -1,5 +1,3 @@
 var angular = require('angular');
-var services = require('./services');
-module.exports = angular.module('phonebook.storage', [
-    services.name
-]);
+module.exports = angular.module('phonebook.storage', []).
+provider('Storage', require('./services/StorageProvider'));

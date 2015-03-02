@@ -1,9 +1,4 @@
-var angular = require('angular');
-var storage = require('../../storage');
-module.exports = angular.module('phonebook.itemList.ItemListCtrl', [
-    storage.name
-]).
-controller('ItemListCtrl', ItemListCtrl);
+module.exports = ItemListCtrl;
 
 ItemListCtrl.$inject = ['$scope', '$q', 'Storage'];
 function ItemListCtrl($scope, $q, Storage) {

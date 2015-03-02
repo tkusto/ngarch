@@ -1,11 +1,4 @@
-var angular = require('angular');
-var uiRouter = require('angular-ui-router');
-var storage = require('../../storage');
-module.exports = angular.module('phonebook.editItem.EditItemCtrl', [
-    uiRouter.name,
-    storage.name
-]).
-controller('EditItemCtrl', EditItemCtrl);
+module.exports = EditItemCtrl;
 
 EditItemCtrl.$inject = ['$scope', '$stateParams', 'Storage'];
 function EditItemCtrl($scope, $stateParams, Storage) {

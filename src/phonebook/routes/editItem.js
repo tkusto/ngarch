@@ -1,12 +1,4 @@
-var angular = require('angular');
-var uiRouter = require('angular-ui-router');
-var editItem = require('../editItem');
-
-module.exports = angular.module('phonebook.routes.editItemRoutes', [
-    uiRouter.name,
-    editItem.name
-]).
-config(Routes);
+module.exports = Routes;
 
 Routes.$inject = ['$stateProvider'];
 function Routes($stateProvider) {
@@ -16,7 +8,7 @@ function Routes($stateProvider) {
             'main@': {
                 controller: 'EditItemCtrl',
                 controllerAs: 'editItem',
-                templateUrl: editItem.tmpls.addItem
+                templateUrl: 'editItem/partials/addItem.html'
             }
         }
     });
@@ -26,7 +18,7 @@ function Routes($stateProvider) {
             'main@': {
                 controller: 'EditItemCtrl',
                 controllerAs: 'editItem',
-                templateUrl: editItem.tmpls.editItem
+                templateUrl: 'editItem/partials/editItem.html'
             }
         }
     });

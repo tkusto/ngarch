@@ -1,12 +1,4 @@
-var angular = require('angular');
-var uiRouter = require('angular-ui-router');
-var itemList = require('../itemList');
-
-module.exports = angular.module('phonebook.routes.itemListRoutes', [
-    uiRouter.name,
-    itemList.name
-]).
-config(Routes);
+module.exports = Routes;
 
 Routes.$inject = ['$stateProvider'];
 function Routes($stateProvider) {
@@ -16,7 +8,7 @@ function Routes($stateProvider) {
             'main@': {
                 controller: 'ItemListCtrl',
                 controllerAs: 'itemList',
-                templateUrl: itemList.tmpls.itemList
+                templateUrl: 'itemList/partials/itemList.html'
             }
         }
     });

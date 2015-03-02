@@ -1,17 +1,13 @@
 var angular = require('angular');
 var uiRouter = require('angular-ui-router');
-var itemListRoutes = require('./itemListRoutes');
-var editItemRoutes = require('./editItemRoutes');
 
-module.exports = angular.module('phonebook.routes', [
-    uiRouter.name,
-    itemListRoutes.name,
-    editItemRoutes.name
-]).
-config(Routes);
+module.exports = angular.module('phonebook.routes', [uiRouter.name]).
+config(BaseRoutes).
+config(require('./itemList')).
+config(require('./editItem'));
 
-Routes.$inject = ['$stateProvider', '$urlRouterProvider'];
-function Routes($stateProvider, $urlRouterProvider) {
+BaseRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
+function BaseRoutes($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/ItemList');
     $stateProvider.state('main', {
         abstract: true
